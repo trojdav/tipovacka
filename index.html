@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mundial Tipovačka</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>⚽ Mundial Tipovačka 2026 ⚽</h1>
+     <div class="subtitle" id="subtitle">Dnes:</div> 
+       <div id="leaderBoxHeader"></div>     
+    <button class="cta" onclick="openLoginModal()">Přihlásit se!
+</button>
+<button class="cta" onclick="openPredictionsModal()">
+  Predikce
+</button>
+<div id="userBadge"></div>
+
+    </header>
+
+    <div class="top-section">
+
+  <section id="matches" class="panel left">
+    <h2>⚽ Dnešní zápasy</h2>
+    <div id="matchesList"></div>
+  </section>
+
+  <section id="table" class="panel right">
+    <h2>🏆 Tabulka</h2>
+    <table id="rankingTable"></table>
+  </section>
+
+</div>
+
+    <section id="history">
+      <h2>Historie zápasů</h2>
+<div id="dayFilter" class="day-filter"></div>
+      <div id="historyList"></div>
+    </section>
+
+    <section id="predictions">
+      <h2>Predikce turnaje</h2>
+      <div id="predictionsList"></div>
+    </section>
+
+  </div>
+
+<div class="match ${statusClass}">
+
+<div id="matchModal" class="modal hidden">
+  <div class="modal-content">
+
+    <div id="modalTitle"></div>
+
+    <div id="modalBody"></div>
+
+  </div>
+</div>
+  </div>
+</div>
+
+
+<div id="tipsModal" class="tips-modal hidden">
+  <div class="tips-modal-content">
+    <div class="tips-modal-header">
+      <h2>Tipnout zápas</h2>
+      <button onclick="closeTipsModal()">✕</button>
+    </div>
+
+    <div id="tipsModalBody"></div>
+  </div>
+</div>
+<div id="loginModal" class="modal hidden">
+
+  <div class="modal-content login-card">
+
+    <div class="modal-header">
+      <h2>Přihlášení</h2>
+      <button onclick="closeLoginModal()">✕</button>
+    </div>
+
+    <p class="login-subtitle">
+      Zadej jméno a PIN pro vstup do tipovačky
+    </p>
+
+    <div class="login-form">
+
+      <input type="text" id="loginName" placeholder="Jméno">
+
+      <input type="password" id="loginPin" placeholder="PIN">
+
+      <button class="login-btn" onclick="loginUser()">
+        Přihlásit se
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+<div id="predictionsModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Turnajové predikce</h2>
+      <button onclick="closePredictionsModal()">✕</button>
+    </div>
+
+    <div id="predictionsModalBody"></div>
+  </div>
+</div>
+<div id="toast" class="toast hidden"></div>
+  <script src="script.js"></script>
+<footer class="site-footer">
+  <div class="footer-line"></div>
+  <div class="footer-text">
+    © 2026 Tipovačka. Všechna práva a vaše prachy vyhrazeny, zmrdi.
+  </div>
+</footer>
+</body>
+</html>
