@@ -19,6 +19,27 @@ body {
   --radius: 12px;
 }
 
+.scoring-panel {
+  margin-top: 20px;
+}
+
+.scoring-block {
+  margin-bottom: 20px;
+}
+
+.scoring-block h3 {
+  margin-bottom: 10px;
+  color: goldenrod;
+}
+
+.score-rule {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-left: 3px solid goldenrod;
+  background: #fafafa;
+  border-radius: 6px;
+}
+
 .leader-header {
   display: inline-block;
   margin: 10px 0;
