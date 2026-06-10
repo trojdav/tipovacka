@@ -1141,7 +1141,8 @@ background: #f9fafb;}
 }
 
 .tab-content {
-  overflow-y: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 12px 4px;
 
   max-height: calc(85vh - 120px);
