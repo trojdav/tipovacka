@@ -1076,6 +1076,7 @@ function setPredTab(tab) {
 }
 
 function openPredictionsModal() {
+  document.body.style.overflow = "hidden";
   const my = getMyPredictions() || {};
   const myGroups = getMyGroupPredictions() || {};
   const user = JSON.parse(
@@ -1221,6 +1222,7 @@ function showToast(message, type = "success") {
 
 function closePredictionsModal() {
   document.getElementById("predictionsModal").classList.add("hidden");
+  document.body.style.overflow = "";
 }
 
 async function savePredictions() {
