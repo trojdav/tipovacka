@@ -1053,6 +1053,7 @@ h2 {
   overflow: hidden;
   overflow-y: auto;
   overflow-x: hidden;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   margin: auto;
