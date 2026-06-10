@@ -1077,7 +1077,10 @@ function setPredTab(tab) {
 
 function openPredictionsModal() {
   const my = getMyPredictions() || {};
-    const myGroups = getMyGroupPredictions() || {};
+  const myGroups = getMyGroupPredictions() || {};
+  const user = JSON.parse(
+  localStorage.getItem("tipovacUser")
+);
 
   document.getElementById("predictionsModal").classList.remove("hidden");
 
@@ -1108,11 +1111,11 @@ function openPredictionsModal() {
   <div id="tab-general" class="tab-content">
     <div class="pred-section">
 
-      <label>Jméno</label>
-      <input id="pred-player"
-        value="${my.player || ""}"
-        ${my.player ? "disabled" : ""}
-        placeholder="Tvé jméno" />
+<label>Jméno</label>
+<input id="pred-player"
+  value="${user?.name || ""}"
+  disabled
+        placeholder="Nejdřív se prihlaš" />
 
     </div>
 
