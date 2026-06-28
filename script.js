@@ -978,15 +978,38 @@ const canTip = new Date() < kickoff;
   }
 }
 
-  matchTips.forEach(t => {
-    list.innerHTML += `
-      <div class="tip-row">
-        <div class="tip-player">${t.player}</div>
-        <div class="tip-score">${t.home} : ${t.away}</div>
-        <div class="tip-points">${t.points} b</div>
+matchTips.forEach(t => {
+
+  const isMe = currentUser && t.player === currentUser.name;
+
+  const tipText =
+    (!canTip || isMe)
+      ? `${t.home} : ${t.away}`
+      : "? : ?";
+
+  const pointsText =
+    canTip
+      ? "—"
+      : `${t.points} b`;
+
+  list.innerHTML += `
+    <div class="tip-row">
+
+      <div class="tip-player">
+        ${t.player}
       </div>
-    `;
-  });
+
+      <div class="tip-score">
+        ${tipText}
+      </div>
+
+      <div class="tip-points">
+        ${pointsText}
+      </div>
+
+    </div>
+  `;
+});
 }
 
 function closeModal() {
