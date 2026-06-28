@@ -418,6 +418,10 @@ if (selectedDay && selectedDay !== "all" && m.date !== selectedDay) return;
           ? `${m.home_goals} : ${m.away_goals}`
           : "VS";
 
+
+        const currentUser = JSON.parse(localStorage.getItem("tipovacUser"));
+        const kickoff = new Date(`${m.date}T${m.time}`);
+        const canTip = new Date() < kickoff;
         const matchTips = tips
           .filter(t => t.match_id == m.id)
           .map(t => ({
@@ -491,13 +495,21 @@ if (selectedDay && selectedDay !== "all" && m.date !== selectedDay) return;
                 ${t.player}
               </div>
 
-              <div class="tip-score">
-                ${t.home} : ${t.away}
-              </div>
+<div class="tip-score">
+  ${
+    canTip && (!currentUser || t.player !== currentUser.name)
+      ? "🔒"
+      : `${t.home} : ${t.away}`
+  }
+</div>
 
-              <div class="tip-points">
-                ${t.points === "-" ? "-" : t.points + " b"}
-              </div>
+<div class="tip-points">
+  ${
+    canTip
+      ? "-"
+      : (t.points === "-" ? "-" : t.points + " b")
+  }
+</div>
 
             </div>
           `;
@@ -982,31 +994,21 @@ matchTips.forEach(t => {
 
   const isMe = currentUser && t.player === currentUser.name;
 
-  const tipText =
-    (!canTip || isMe)
-      ? `${t.home} : ${t.away}`
-      : "? : ?";
+  const score =
+    canTip && !isMe
+      ? "🔒"
+      : `${t.home} : ${t.away}`;
 
-  const pointsText =
+  const points =
     canTip
-      ? "—"
+      ? "-"
       : `${t.points} b`;
 
   list.innerHTML += `
     <div class="tip-row">
-
-      <div class="tip-player">
-        ${t.player}
-      </div>
-
-      <div class="tip-score">
-        ${tipText}
-      </div>
-
-      <div class="tip-points">
-        ${pointsText}
-      </div>
-
+      <div class="tip-player">${t.player}</div>
+      <div class="tip-score">${score}</div>
+      <div class="tip-points">${points}</div>
     </div>
   `;
 });
